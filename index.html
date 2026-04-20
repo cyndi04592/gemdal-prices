@@ -22,28 +22,24 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ── 關鍵：讓頁面高度自動撐開，不產生內層 scrollbar ── */
-html {
-  overflow: visible;
-  height: auto;
-}
-body {
-  overflow: visible;
-  height: auto;
+/* ── 完全禁止 body/html 產生 scrollbar ── */
+html, body {
+  overflow: hidden !important;
   background: var(--warm-off);
   color: var(--charcoal);
   font-family: 'Noto Serif TC', serif;
   -webkit-text-size-adjust: 100%;
+  width: 100%;
 }
 
 .metals-widget {
   max-width: 960px;
   margin: 0 auto;
-  padding: 36px 16px 40px;
+  padding: 32px 16px 36px;
 }
 
 /* ── 標題 ── */
-.widget-header { text-align: center; margin-bottom: 28px; }
+.widget-header { text-align: center; margin-bottom: 24px; }
 .widget-header::before,
 .widget-header::after {
   content: '';
@@ -53,8 +49,8 @@ body {
   background: var(--gold);
   margin: 0 auto;
 }
-.widget-header::before { margin-bottom: 14px; }
-.widget-header::after  { margin-top: 14px; }
+.widget-header::before { margin-bottom: 12px; }
+.widget-header::after  { margin-top: 12px; }
 .widget-header h2 {
   font-family: 'Cormorant Garamond', 'Noto Serif TC', serif;
   font-size: clamp(20px, 5vw, 30px);
@@ -66,7 +62,7 @@ body {
   font-size: clamp(9px, 2.5vw, 12px);
   letter-spacing: 0.16em;
   color: var(--mid);
-  margin-top: 5px;
+  margin-top: 4px;
   text-transform: uppercase;
 }
 
@@ -75,7 +71,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   flex-wrap: wrap;
   gap: 8px;
   font-size: clamp(10px, 2.5vw, 11px);
@@ -98,12 +94,12 @@ body {
   white-space: nowrap;
 }
 
-/* ── 卡片 ── */
+/* ── 4 卡片 ── */
 .price-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 @media (max-width: 680px) {
   .price-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
@@ -112,7 +108,7 @@ body {
   background: #fff;
   border: 1px solid var(--border);
   border-top: 2px solid var(--gold);
-  padding: clamp(12px, 3vw, 18px) clamp(8px, 2vw, 14px) clamp(10px, 2.5vw, 14px);
+  padding: clamp(10px, 2.5vw, 16px) clamp(6px, 2vw, 12px);
   text-align: center;
 }
 .metal-symbol {
@@ -124,17 +120,17 @@ body {
   background: rgba(196,151,58,0.08);
   padding: 2px 8px;
   border-radius: 2px;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 .metal-name {
   font-size: clamp(11px, 2.8vw, 14px);
   font-weight: 500;
   color: var(--brown);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 .price-usd {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(17px, 4.5vw, 26px);
+  font-size: clamp(16px, 4.2vw, 24px);
   font-weight: 600;
   color: var(--gold-deep);
   line-height: 1;
@@ -148,31 +144,29 @@ body {
 }
 .price-unit {
   font-size: clamp(8px, 1.8vw, 10px);
-  letter-spacing: 0.06em;
   color: var(--mid);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 .price-twd-row {
   background: var(--cream);
   border-radius: var(--radius);
-  padding: 6px;
-  margin-bottom: 8px;
+  padding: 5px 6px;
+  margin-bottom: 6px;
 }
 .price-twd-label {
   font-size: clamp(8px, 1.8vw, 9px);
-  letter-spacing: 0.1em;
   color: var(--mid);
 }
 .price-twd-val {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(13px, 3.5vw, 17px);
+  font-size: clamp(12px, 3.2vw, 16px);
   color: var(--gold-deep);
   font-weight: 600;
 }
 .change-pill {
   display: inline-block;
-  font-size: clamp(9px, 2vw, 11px);
-  padding: 2px 6px;
+  font-size: clamp(9px, 2vw, 10px);
+  padding: 2px 5px;
   border-radius: 2px;
   max-width: 100%;
   overflow: hidden;
@@ -188,7 +182,7 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 20px 0;
+  margin: 16px 0;
 }
 .gold-divider::before,
 .gold-divider::after {
@@ -203,11 +197,11 @@ body {
   color: var(--gold);
 }
 
-/* ── 圖表切換按鈕 ── */
+/* ── 圖表 ── */
 .chart-section {
   background: #fff;
   border: 1px solid var(--border);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .chart-nav {
   display: flex;
@@ -238,15 +232,15 @@ body {
 }
 .metal-tab.active { background: var(--gold); border-color: var(--gold); color: #fff; }
 
-/* ── TradingView iframe 容器 ── */
-/* 用 padding-top 技巧讓 iframe 完全撐開、不產生 scrollbar */
+/* TradingView iframe — 用 padding-top 撐高，iframe absolute 填滿 */
 .tv-wrapper {
   position: relative;
   width: 100%;
-  padding-top: 420px; /* 桌機高度 */
+  padding-top: 400px;
+  overflow: hidden;
 }
-@media (max-width: 600px) { .tv-wrapper { padding-top: 300px; } }
-@media (max-width: 380px) { .tv-wrapper { padding-top: 260px; } }
+@media (max-width: 600px) { .tv-wrapper { padding-top: 280px; } }
+@media (max-width: 380px) { .tv-wrapper { padding-top: 240px; } }
 
 .tv-wrapper iframe {
   position: absolute;
@@ -255,15 +249,15 @@ body {
   height: 100%;
   border: none;
   display: block;
+  overflow: hidden;
 }
 
 /* ── 底部 ── */
 .widget-footer {
   text-align: center;
   font-size: clamp(9px, 2vw, 10px);
-  letter-spacing: 0.07em;
   color: var(--mid);
-  margin-top: 10px;
+  margin-top: 8px;
   line-height: 2;
 }
 
@@ -346,7 +340,6 @@ body {
 
   <div class="gold-divider"><span>✦</span></div>
 
-  <!-- 圖表區：改用官方 TradingView iframe embed，完全不產生內層 scroll -->
   <div class="chart-section">
     <div class="chart-nav">
       <span class="chart-nav-title">走勢圖 / Price Chart</span>
@@ -355,9 +348,7 @@ body {
       <button class="metal-tab" onclick="switchMetal('TVC:PLATINUM',this)">鉑金</button>
       <button class="metal-tab" onclick="switchMetal('TVC:PALLADIUM',this)">鈀金</button>
     </div>
-    <div class="tv-wrapper" id="tvWrapper">
-      <!-- TradingView iframe 動態插入 -->
-    </div>
+    <div class="tv-wrapper" id="tvWrapper"></div>
   </div>
 
   <div class="widget-footer">
@@ -373,7 +364,6 @@ const METALS = ['XAU','XAG','XPT','XPD'];
 let RATE = 32.5;
 let currentSymbol = 'FX_IDC:XAUUSD';
 
-/* ── 匯率 ── */
 async function fetchRate() {
   try {
     const r = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
@@ -383,22 +373,18 @@ async function fetchRate() {
   document.getElementById('rateDisplay').textContent = RATE.toFixed(2) + ' TWD';
 }
 
-/* ── 報價卡片 ── */
 async function fetchMetal(sym) {
   try {
     const r = await fetch('https://api.gold-api.com/price/' + sym);
     const d = await r.json();
     const price = d.price;
     const prev  = d.prev_close_price || d.previousClose || null;
-
     document.getElementById('usd-' + sym).innerHTML =
       '<span class="currency">$</span>' +
       price.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-
     const twdG = (price / TROY) * RATE;
     document.getElementById('twd-' + sym).textContent =
       'NT$' + (twdG >= 100 ? Math.round(twdG).toLocaleString('zh-TW') : twdG.toFixed(2));
-
     const chgEl = document.getElementById('chg-' + sym);
     if (prev) {
       const diff = price - prev;
@@ -424,27 +410,47 @@ async function fetchAllPrices() {
     now.toLocaleTimeString('zh-TW', {hour:'2-digit', minute:'2-digit', second:'2-digit'});
 }
 
-/* ── TradingView：用官方 widget iframe，不自己跑 JS ── */
 function loadTV(symbol) {
   const wrapper = document.getElementById('tvWrapper');
   const isMobile = window.innerWidth <= 600;
+  const chartStyle = isMobile ? 3 : 1;
+  const h = window.innerWidth < 380 ? 240 : isMobile ? 280 : 400;
+  wrapper.style.paddingTop = h + 'px';
 
-  // style=3 Area折線(手機清爽) / style=1 K線(桌機)
-  const style  = isMobile ? 3 : 1;
-  const height = isMobile ? (window.innerWidth < 380 ? 260 : 300) : 420;
+  const ov = encodeURIComponent(JSON.stringify({
+    "mainSeriesProperties.candleStyle.upColor":         "#C4973A",
+    "mainSeriesProperties.candleStyle.downColor":       "#9A3A3A",
+    "mainSeriesProperties.candleStyle.borderUpColor":   "#C4973A",
+    "mainSeriesProperties.candleStyle.borderDownColor": "#9A3A3A",
+    "mainSeriesProperties.candleStyle.wickUpColor":     "#C4973A",
+    "mainSeriesProperties.candleStyle.wickDownColor":   "#9A3A3A",
+    "mainSeriesProperties.areaStyle.color1":            "rgba(196,151,58,0.28)",
+    "mainSeriesProperties.areaStyle.color2":            "rgba(196,151,58,0.02)",
+    "mainSeriesProperties.areaStyle.linecolor":         "#C4973A",
+    "mainSeriesProperties.areaStyle.linewidth":         2
+  }));
 
-  // 更新 wrapper 高度
-  wrapper.style.paddingTop = height + 'px';
+  const src = `https://s.tradingview.com/widgetembed/?frameElementId=tv_chart`
+    + `&symbol=${encodeURIComponent(symbol)}`
+    + `&interval=D`
+    + `&hidesidetoolbar=1`
+    + `&symboledit=0`
+    + `&saveimage=0`
+    + `&toolbarbg=FAF7F2`
+    + `&hideideas=1`
+    + `&theme=light`
+    + `&style=${chartStyle}`
+    + `&timezone=Asia%2FTaipei`
+    + `&hide_top_toolbar=${isMobile ? 1 : 0}`
+    + `&hide_legend=${isMobile ? 1 : 0}`
+    + `&overrides=${ov}`
+    + `&locale=zh_TW`
+    + `&utm_source=gemdal.com`;
 
-  // 用官方 widget HTML embed（不產生自己的 scroll）
-  wrapper.innerHTML = `
-    <iframe
-      scrolling="no"
-      src="https://s.tradingview.com/widgetembed/?frameElementId=tv_chart&symbol=${encodeURIComponent(symbol)}&interval=D&hidesidetoolbar=1&symboledit=0&saveimage=0&toolbarbg=FAF7F2&studies=[]&hideideas=1&theme=light&style=${style}&timezone=Asia%2FTaipei&studies_overrides={}&overrides={%22mainSeriesProperties.candleStyle.upColor%22%3A%22%23C4973A%22%2C%22mainSeriesProperties.candleStyle.downColor%22%3A%22%239A3A3A%22%2C%22mainSeriesProperties.candleStyle.borderUpColor%22%3A%22%23C4973A%22%2C%22mainSeriesProperties.candleStyle.borderDownColor%22%3A%22%239A3A3A%22%2C%22mainSeriesProperties.candleStyle.wickUpColor%22%3A%22%23C4973A%22%2C%22mainSeriesProperties.candleStyle.wickDownColor%22%3A%22%239A3A3A%22%2C%22mainSeriesProperties.areaStyle.color1%22%3A%22rgba(196%2C151%2C58%2C0.3)%22%2C%22mainSeriesProperties.areaStyle.color2%22%3A%22rgba(196%2C151%2C58%2C0.02)%22%2C%22mainSeriesProperties.areaStyle.linecolor%22%3A%22%23C4973A%22}&locale=zh_TW&utm_source=gemdal.com&utm_medium=widget"
-      style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
-      allowtransparency="true"
-      frameborder="0">
-    </iframe>`;
+  wrapper.innerHTML =
+    `<iframe scrolling="no" src="${src}"
+      style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;overflow:hidden;"
+      allowtransparency="true" frameborder="0"></iframe>`;
 }
 
 function switchMetal(symbol, btn) {
@@ -454,7 +460,6 @@ function switchMetal(symbol, btn) {
   loadTV(symbol);
 }
 
-/* ── 刷新 ── */
 async function doRefresh() {
   const btn = document.getElementById('refreshBtn');
   btn.textContent = '讀取中…';
@@ -465,14 +470,12 @@ async function doRefresh() {
   btn.disabled = false;
 }
 
-/* ── resize ── */
 let resizeTimer;
 window.addEventListener('resize', function() {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(function() { loadTV(currentSymbol); }, 400);
 });
 
-/* ── 初始化 ── */
 async function init() {
   await fetchRate();
   await fetchAllPrices();
