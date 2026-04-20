@@ -37,10 +37,7 @@ html, body {
 }
 
 /* ── 標題 ── */
-.widget-header {
-  text-align: center;
-  margin-bottom: 28px;
-}
+.widget-header { text-align: center; margin-bottom: 28px; }
 .widget-header::before,
 .widget-header::after {
   content: '';
@@ -52,7 +49,6 @@ html, body {
 }
 .widget-header::before { margin-bottom: 14px; }
 .widget-header::after  { margin-top: 14px; }
-
 .widget-header h2 {
   font-family: 'Cormorant Garamond', 'Noto Serif TC', serif;
   font-size: clamp(20px, 5vw, 30px);
@@ -83,7 +79,6 @@ html, body {
   padding-bottom: 12px;
 }
 .meta-row strong { color: var(--gold-deep); }
-
 .refresh-btn {
   background: transparent;
   border: 1px solid var(--border);
@@ -99,7 +94,7 @@ html, body {
 }
 .refresh-btn:active { border-color: var(--gold); color: var(--gold-deep); }
 
-/* ── 卡片 Grid ── */
+/* ── 卡片 ── */
 .price-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -117,7 +112,6 @@ html, body {
   padding: clamp(12px, 3vw, 18px) clamp(8px, 2vw, 14px) clamp(10px, 2.5vw, 14px);
   text-align: center;
 }
-
 .metal-symbol {
   display: inline-block;
   font-family: 'Cormorant Garamond', serif;
@@ -129,7 +123,6 @@ html, body {
   border-radius: 2px;
   margin-bottom: 6px;
 }
-
 .metal-name {
   font-size: clamp(11px, 2.8vw, 14px);
   font-weight: 500;
@@ -137,7 +130,6 @@ html, body {
   letter-spacing: 0.03em;
   margin-bottom: 8px;
 }
-
 .price-usd {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(17px, 4.5vw, 26px);
@@ -152,14 +144,12 @@ html, body {
   vertical-align: super;
   margin-right: 1px;
 }
-
 .price-unit {
   font-size: clamp(8px, 1.8vw, 10px);
   letter-spacing: 0.06em;
   color: var(--mid);
   margin-bottom: 8px;
 }
-
 .price-twd-row {
   background: var(--cream);
   border-radius: var(--radius);
@@ -177,7 +167,6 @@ html, body {
   color: var(--gold-deep);
   font-weight: 600;
 }
-
 .change-pill {
   display: inline-block;
   font-size: clamp(9px, 2vw, 11px);
@@ -192,7 +181,7 @@ html, body {
 .change-pill.down { background: rgba(154,58,58,0.1);  color: var(--down); }
 .change-pill.flat { background: rgba(107,90,62,0.08); color: var(--mid); }
 
-/* ── 金色分隔 ── */
+/* ── 分隔 ── */
 .gold-divider {
   display: flex;
   align-items: center;
@@ -212,7 +201,7 @@ html, body {
   color: var(--gold);
 }
 
-/* ── TradingView ── */
+/* ── 圖表區 ── */
 .chart-section {
   background: #fff;
   border: 1px solid var(--border);
@@ -228,7 +217,6 @@ html, body {
   gap: 6px;
   flex-wrap: wrap;
 }
-
 .chart-nav-title {
   font-size: clamp(10px, 2.5vw, 12px);
   letter-spacing: 0.1em;
@@ -238,12 +226,23 @@ html, body {
   white-space: nowrap;
 }
 
+/* 手機顯示圖表類型切換 */
+.chart-type-hint {
+  font-size: 10px;
+  color: var(--mid);
+  letter-spacing: 0.06em;
+  display: none;
+}
+@media (max-width: 600px) {
+  .chart-type-hint { display: inline; }
+}
+
 .metal-tab {
   border: 1px solid var(--border);
   background: transparent;
   color: var(--mid);
   font-family: 'Noto Serif TC', serif;
-  font-size: clamp(10px, 2.5vw, 11px);
+  font-size: clamp(10px, 2.8vw, 11px);
   letter-spacing: 0.06em;
   padding: 5px 10px;
   cursor: pointer;
@@ -254,9 +253,12 @@ html, body {
 .metal-tab.active { background: var(--gold); border-color: var(--gold); color: #fff; }
 .metal-tab:active:not(.active) { border-color: var(--gold-deep); color: var(--gold-deep); }
 
-.tv-container { height: 400px; }
-@media (max-width: 600px) { .tv-container { height: 300px; } }
-@media (max-width: 380px) { .tv-container { height: 260px; } }
+/* 桌機：K線圖高度 */
+.tv-container { height: 420px; }
+
+/* 手機：折線圖高度（矮一點更清爽）*/
+@media (max-width: 600px) { .tv-container { height: 260px; } }
+@media (max-width: 380px) { .tv-container { height: 230px; } }
 
 /* ── 底部 ── */
 .widget-footer {
@@ -310,7 +312,6 @@ html, body {
       </div>
       <span class="change-pill flat" id="chg-XAU">—</span>
     </div>
-
     <div class="price-card">
       <div class="metal-symbol">XAG</div>
       <div class="metal-name">白銀 Silver</div>
@@ -322,7 +323,6 @@ html, body {
       </div>
       <span class="change-pill flat" id="chg-XAG">—</span>
     </div>
-
     <div class="price-card">
       <div class="metal-symbol">XPT</div>
       <div class="metal-name">鉑金 Platinum</div>
@@ -334,7 +334,6 @@ html, body {
       </div>
       <span class="change-pill flat" id="chg-XPT">—</span>
     </div>
-
     <div class="price-card">
       <div class="metal-symbol">XPD</div>
       <div class="metal-name">鈀金 Palladium</div>
@@ -352,7 +351,11 @@ html, body {
 
   <div class="chart-section">
     <div class="chart-nav">
-      <span class="chart-nav-title">走勢圖 / Price Chart</span>
+      <span class="chart-nav-title">
+        走勢圖
+        <span class="chart-type-hint">（折線）</span>
+        <span style="font-size:9px;color:var(--mid);letter-spacing:0.1em;display:none;" class="desktop-hint"> / PRICE CHART（K線）</span>
+      </span>
       <button class="metal-tab active" onclick="switchMetal('XAUUSD',this)">黃金</button>
       <button class="metal-tab" onclick="switchMetal('XAGUSD',this)">白銀</button>
       <button class="metal-tab" onclick="switchMetal('XPTUSD',this)">鉑金</button>
@@ -372,6 +375,9 @@ html, body {
 const TROY = 31.1035;
 const METALS = ['XAU','XAG','XPT','XPD'];
 let RATE = 32.5;
+
+// 判斷是否手機
+function isMobile() { return window.innerWidth <= 600; }
 
 async function fetchRate() {
   try {
@@ -425,8 +431,17 @@ async function fetchAllPrices() {
 function loadTV(symbol) {
   const c = document.getElementById('tvContainer');
   c.innerHTML = '';
+
+  const mobile = isMobile();
+
+  // 手機用 3=Area折線圖，桌機用 1=K線圖
+  const chartStyle = mobile ? '3' : '1';
+
+  // 手機隱藏工具列更清爽
+  const hideToolbar = mobile;
+
   const w = window.innerWidth;
-  const h = w < 380 ? 260 : w < 600 ? 300 : 400;
+  const h = w < 380 ? 230 : w <= 600 ? 260 : 420;
 
   function build() {
     new TradingView.widget({
@@ -435,24 +450,33 @@ function loadTV(symbol) {
       interval: 'D',
       timezone: 'Asia/Taipei',
       theme: 'light',
-      style: '1',
+      style: chartStyle,        // ← 手機:3=Area  桌機:1=K線
       locale: 'zh_TW',
       toolbar_bg: '#FAF7F2',
       enable_publishing: false,
-      hide_top_toolbar: false,
-      hide_legend: false,
+      hide_top_toolbar: hideToolbar,  // ← 手機隱藏頂部工具列
+      hide_legend: mobile,            // ← 手機隱藏圖例
+      hide_side_toolbar: true,        // ← 永遠隱藏右側工具列
       save_image: false,
       height: h,
       width: '100%',
       backgroundColor: '#FFFFFF',
       gridColor: 'rgba(196,151,58,0.06)',
       overrides: {
+        // K線顏色
         'mainSeriesProperties.candleStyle.upColor':         '#C4973A',
         'mainSeriesProperties.candleStyle.downColor':       '#9A3A3A',
         'mainSeriesProperties.candleStyle.borderUpColor':   '#C4973A',
         'mainSeriesProperties.candleStyle.borderDownColor': '#9A3A3A',
         'mainSeriesProperties.candleStyle.wickUpColor':     '#C4973A',
         'mainSeriesProperties.candleStyle.wickDownColor':   '#9A3A3A',
+        // 折線圖顏色
+        'mainSeriesProperties.areaStyle.color1':       'rgba(196,151,58,0.3)',
+        'mainSeriesProperties.areaStyle.color2':       'rgba(196,151,58,0.02)',
+        'mainSeriesProperties.areaStyle.linecolor':    '#C4973A',
+        'mainSeriesProperties.areaStyle.linewidth':    2,
+        'mainSeriesProperties.lineStyle.color':        '#C4973A',
+        'mainSeriesProperties.lineStyle.linewidth':    2,
       },
     });
   }
@@ -468,7 +492,10 @@ function loadTV(symbol) {
   }
 }
 
+let currentSymbol = 'XAUUSD';
+
 function switchMetal(symbol, btn) {
+  currentSymbol = symbol;
   document.querySelectorAll('.metal-tab').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   loadTV(symbol);
@@ -483,6 +510,13 @@ async function doRefresh() {
   btn.textContent = '↻ 更新報價';
   btn.disabled = false;
 }
+
+// 視窗大小改變時重新載入圖表（桌機↔手機切換）
+let resizeTimer;
+window.addEventListener('resize', function() {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(function() { loadTV(currentSymbol); }, 400);
+});
 
 async function init() {
   await fetchRate();
